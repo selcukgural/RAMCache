@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RAMCache", "RAMCache\RAMCache.csproj", "{4E87B55C-AB00-457C-98E6-9ECCE8FC0283}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RAMCache.Test", "RAMCache.Test\RAMCache.Test.csproj", "{1D7D0F85-03F1-4EEF-80D4-589FC9340755}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{65A8B138-CB59-4C2B-B8D6-19AA573693AC}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E87B55C-AB00-457C-98E6-9ECCE8FC0283}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E87B55C-AB00-457C-98E6-9ECCE8FC0283}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E87B55C-AB00-457C-98E6-9ECCE8FC0283}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E87B55C-AB00-457C-98E6-9ECCE8FC0283}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D7D0F85-03F1-4EEF-80D4-589FC9340755}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D7D0F85-03F1-4EEF-80D4-589FC9340755}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D7D0F85-03F1-4EEF-80D4-589FC9340755}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D7D0F85-03F1-4EEF-80D4-589FC9340755}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {776B5AE3-5C9F-485C-8F0B-B5F6AD7795D3}
+	EndGlobalSection
+EndGlobal
