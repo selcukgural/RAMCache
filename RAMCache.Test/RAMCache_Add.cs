@@ -11,21 +11,21 @@ namespace RAMCache.Test
     {
         #region RAMCache_Add
 
-        [TestCase("Barış Manço", "Hal hal", ExpectedResult = true)]
+        [TestCase("Barış Manço", "Ride on miranda", ExpectedResult = true)]
         public bool Add_New_Entry_If_Success_Return_True(object key, object value)
         {
             var cache = new RAMCache(new Options.RAMCacheServiceOptions());
             return cache.Add(key, value);
         }
 
-        [TestCase("Barış Manço", "Hal hal", ExpectedResult = true)]
+        [TestCase("Barış Manço", "Emerald garden", ExpectedResult = true)]
         public bool Add_New_Entry_With_ExpireTime_If_Success_Return_True(object key, object value)
         {
             var cache = new RAMCache(new Options.RAMCacheServiceOptions());
             return cache.Add(key, value, TimeSpan.FromMinutes(2));
         }
 
-        [TestCase("Barış Manço", "Hal hal", ExpectedResult = true)]
+        [TestCase("Barış Manço", "Bugün bayram", ExpectedResult = true)]
         public bool Add_New_Entry_With_RAMCacheExpireOptions_Only_ExpireTime_If_Success_Return_True(object key,
             object value)
         {
@@ -83,27 +83,25 @@ namespace RAMCache.Test
             cache.AddOrUpdate(key, value);
         }
 
-        [TestCase("Barış Manço", "Hal hal")]
+        [TestCase("Barış Manço", "Lucky road")]
         public void Add_Or_Update_New_Entry_With_ExpireTime_If_Success_Return_True(object key, object value)
         {
             var cache = new RAMCache(new Options.RAMCacheServiceOptions());
             cache.AddOrUpdate(key, value, TimeSpan.FromMinutes(2));
         }
 
-        [TestCase("Barış Manço", "Hal hal")]
+        [TestCase("Barış Manço", "Lonely man")]
         public void Add_Or_Update_New_Entry_With_RAMCacheExpireOptions_Only_ExpireTime_If_Success_Return_True(object key, object value)
         {
             var cache = new RAMCache(new Options.RAMCacheServiceOptions());
             cache.AddOrUpdate(key, value, new RAMCacheExpireOptions(TimeSpan.FromMinutes(1)));
         }
 
-        [TestCase("Barış Manço", "Hal hal")]
+        [TestCase("Barış Manço", "Lady of the seventh sky")]
         public void Add_Or_Update_New_Entry_With_RAMCacheExpireOptions_Before_And_After_Actions(object key, object value)
         {
             var cache = new RAMCache(new Options.RAMCacheServiceOptions());
             cache.AddOrUpdate(key, value, new RAMCacheExpireOptions(TimeSpan.FromMinutes(1), () => Debug.WriteLine("After action"), () => Debug.WriteLine("Before action")));
-
-           //cache.RAMCache_Get()
         }
 
         [TestCase("Barış Manço", "Dönence")]
@@ -112,6 +110,29 @@ namespace RAMCache.Test
             var cache = new RAMCache(new Options.RAMCacheServiceOptions());
             cache.AddOrUpdate(key, value);
             cache.AddOrUpdate(key, value);
+        }
+
+        [TestCase("Barış Manço", "Kara sevda",ExpectedResult = true)]
+        public bool Add_Or_Update_Expire_Time_If_Key_And_Expire_Time_Already_Exists(object key, object value)
+        {
+            var cache = new RAMCache(new Options.RAMCacheServiceOptions());
+            cache.AddOrUpdate(key, value,TimeSpan.FromMinutes(10));
+            return cache.AddOrUpdate(key, TimeSpan.FromHours(1));
+        }
+
+        [TestCase("Barış Manço","İşte hende işte deve", ExpectedResult = true)]
+        public bool Add_Or_Update_Expire_Time_If_Key_Already_Exists_But_Expire_Time_Not_Exists(object key, object value)
+        {
+            var cache = new RAMCache(new Options.RAMCacheServiceOptions());
+            cache.AddOrUpdate(key, value);
+            return cache.AddOrUpdate(key, TimeSpan.FromHours(1));
+        }
+
+        [TestCase("ver lefter'e yaz deftere",ExpectedResult = false)]
+        public bool Add_Or_Update_Expire_Time_If_Key_Not_Exists(object key)
+        {
+            var cache = new RAMCache(new Options.RAMCacheServiceOptions());
+            return cache.AddOrUpdate(key, TimeSpan.FromHours(1));
         }
 
         [TestCase(null, "Dağlar dağlar")]

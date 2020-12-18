@@ -109,6 +109,36 @@ namespace RAMCache
         #endregion
 
         #region Add
+
+        /// <summary>
+        /// It will be add or update expire time for key  
+        /// </summary>
+        /// <param name="key">Entry key</param>
+        /// <param name="expireTime">When will it expire</param>
+        /// <returns>If key exists and update success true otherwise false</returns>
+        public bool AddOrUpdate(object key, TimeSpan expireTime)
+        {
+            if (!_cache.TryGetValue(key, out var ramCacheEntry)) return false;
+
+            lock (_lock)
+            {
+                if (ramCacheEntry.RAMCacheExpireOptions != null)
+                {
+                    ramCacheEntry.RAMCacheExpireOptions.ExpireTime = expireTime;
+                    ramCacheEntry.RAMCacheExpireOptions.Timer.Start();
+                }
+                else
+                {
+                    ramCacheEntry.RAMCacheExpireOptions = new RAMCacheExpireOptions(expireTime);
+                    ramCacheEntry.RAMCacheExpireEventHandler += RAMCacheExpireEventHandler;
+                    ramCacheEntry.RAMCacheExpireOptions.Timer.Start();
+                }
+            }
+
+            _cache.AddOrUpdate(key, ramCacheEntry, (k, v) => ramCacheEntry);
+            return true;
+        }
+
         /// <summary>
         /// Add the entry corresponding to the key
         /// </summary>
@@ -182,6 +212,7 @@ namespace RAMCache
                     if (ramCacheEntry.RAMCacheExpireOptions == null)
                     {
                         ramCacheEntry.RAMCacheExpireOptions = new RAMCacheExpireOptions(expireTime);
+                        ramCacheEntry.RAMCacheExpireEventHandler += RAMCacheExpireEventHandler;
                         ramCacheEntry.RAMCacheExpireOptions.Timer.Start();
                     }
                     else

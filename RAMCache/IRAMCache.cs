@@ -11,6 +11,7 @@ namespace RAMCache
         void Clear();
         bool Get(object key, out object value);
         bool Remove(object key, out object value);
+        bool AddOrUpdate(object key, TimeSpan expireTime);
         bool Add(object key, object value);
         void AddOrUpdate(object key, object value);
         bool Add(object key, object value, TimeSpan expireTime);
