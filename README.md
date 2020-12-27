@@ -3,6 +3,7 @@
 
 RAMCache is a [NuGet library](https://www.nuget.org/packages/RAMCache) that you can add in to your .Net or .Net Core project.
 
+`Install-Package RAMCache`
 
 Basics
 --------
