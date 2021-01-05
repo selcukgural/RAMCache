@@ -1,7 +1,7 @@
-﻿RAMCache - a simple cache in-memory for .Net ![Logo](https://github.com/selcukgural/RAMCache/blob/master/RAMCache/images/24x.png)
+﻿![Logo](https://github.com/selcukgural/RAMCache/blob/master/RAMCache/images/32x.png) RAMCache - a simple cache in-memory for .Net
 ========================================
 
-[]RAMCache is a [NuGet library](https://www.nuget.org/packages/RAMCache) that you can add in to your .Net or .Net Core project.
+RAMCache is a [NuGet library](https://www.nuget.org/packages/RAMCache) that you can add in to your .Net or .Net Core project.
 
 `Install-Package RAMCache`
 
