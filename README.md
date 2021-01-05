@@ -3,20 +3,20 @@
 
 RAMCache is a [NuGet library](https://www.nuget.org/packages/RAMCache) that you can add in to your .Net or .Net Core project.
 
+`Install-Package RAMCache`
 
 Basics
 --------
 Add a new entry with will delete when expire time is come. This mean, when entry expire time is come entry will be deleted. For this case expire time is 30 minutes.
 
 ```csharp
+ramCache.Add(key, value, TimeSpan.FromMinutes(30));
+```
+or
+```csharp
 var key = "Barış Manço";
 var value = "Nick the chopper";
 cache.AddOrUpdate(key,value);
-```
-or 
-
-```csharp
-ramCache.Add(key, value, TimeSpan.FromMinutes(30));
 ```
 Getting value
 ```csharp
